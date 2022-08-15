@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[LoginController::class, 'index'])->name('login');
+Route::post('/process-login',[LoginController::class, 'login'])->name('process-login');
+Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+Route::get('/editar-perfil',[ProfileController::class, 'index'])->name('edit-profile');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

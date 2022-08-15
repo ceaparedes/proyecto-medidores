@@ -15,27 +15,28 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">IngeSistem - Medidores</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" action="{{route('process-login')}}" method="post">
+                            @csrf 
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user"
-                                    id="exampleInputEmail" aria-describedby="emailHelp"
-                                    placeholder="Enter Email Address...">
+                                <input type="text" name="username" class="form-control form-control-user"
+                                    id="exampleInputUsername" aria-describedby="usenameHelp"
+                                    placeholder="Usuario" value="{{ old('username') }}">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user"
-                                    id="exampleInputPassword" placeholder="Password">
+                                <input type="password" name="password" class="form-control form-control-user"
+                                    id="exampleInputPassword" placeholder="Contraseña">
                             </div>
                             
-                            <a href="index.html" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Login
-                            </a>
+                            </button>
                             <hr>
                             
                         </form>
                         <hr>
-                        <div class="text-center">
-                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
+                        <!-- <div class="text-center">
+                            <a class="small" href="forgot-password.html">¿Olvidaste tu contraseña?</a>
+                        </div> -->
                        
                     </div>
                 </div>

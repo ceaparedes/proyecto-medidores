@@ -19,6 +19,7 @@
         <span>Dashboard</span></a>
 </li>
 
+@if(Auth::user()->hasRole('Administrador'));
 <!-- Divider -->
 <hr class="sidebar-divider">
 
@@ -107,7 +108,7 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
-
+@endif
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
