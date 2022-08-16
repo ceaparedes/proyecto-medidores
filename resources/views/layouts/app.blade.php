@@ -38,11 +38,12 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @yield('content')
-                    @include('layouts.footer')
+                  
                 </div>
                 <!-- End of Content Wrapper -->
 
-            </div>
+            </div>  
+            @include('layouts.footer')
             <!-- End of Page Wrapper -->
 
             <!-- Scroll to Top Button-->

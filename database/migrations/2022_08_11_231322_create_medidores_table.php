@@ -22,7 +22,7 @@ class CreateMedidoresTable extends Migration
             $table->string('varal', 32);
             $table->boolean('estado');
             $table->unsignedBigInteger('marca_id');
-            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('usuario_id')->nullable();
             $table->date('fecha_registro');
             $table->timestamps();
 
