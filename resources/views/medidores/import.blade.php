@@ -7,23 +7,24 @@
     </div>
     <p class="mb-4">En este espacio, puede cargar la información relacionada a los medidores. <br>
         Para descargar el formato <a target="_blank" href="{{asset('public/archivos/formato_medidores.xlsx')}}">Pinche aqui</a>.</p>
-    <form>
-        <div class="card shadow mb-4">
+    <div class="card shadow mb-4">
 
-            <div class="card-body">
+        <div class="card-body">
 
-                <form action="{{route('medidores-process-import')}}" method="POST">
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Archivo</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="archivo">
-                    </div>
+            <form action="{{route('medidores-process-import')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="archivoAImportar">Archivo</label>
+                    <input type="file" class="form-control-file" id="archivoAImportar" name="archivo">
+                </div>
 
-                 <div>
+                <div>
                     <a href="{{route('medidores-index')}}" class="btn btn-secondary">Volver</a>
-                 <button type="submit" class="btn btn-primary">Cargar</button>
-                 </div>   
-            </div>
-    </form>
-</div>
+                    <button type="submit" class="btn btn-primary">Cargar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
 @endsection
