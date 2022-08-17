@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedidoresController;
+use App\Http\Controllers\OrdenesDeTrabajoController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -35,5 +36,10 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         route::get('/medidores', [MedidoresController::class, 'index'])->name('medidores-index');
         route::get('/medidores/importar', [MedidoresController::class, 'import'])->name('medidores-import');
         route::post('/medidores/process-importar', [MedidoresController::class, 'process_import'])->name('medidores-process-import');
+
+        //Ordenes de Trabajo
+        route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo-index');
+        route::get('/ordenes-de-trabajo/importar', [OrdenesDeTrabajoController::class, 'import'])->name('ordenes-de-trabajo-import');
+        route::post('/ordenes-de-trabajo/process-importar', [OrdenesDeTrabajoController::class, 'process_import'])->name('ordenes-de-trabajo-process-import');
     });
 });
