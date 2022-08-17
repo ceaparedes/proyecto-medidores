@@ -28,4 +28,13 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
+
+    public function messages(){
+
+        return [
+            'username.required' => 'Debe ingresar un usuario',
+            'username.max' => 'El usuario supera las 40 caracteres',
+            'password.required' => 'Debe ingresar una contraseña',
+        ];
+    }
 }
