@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <input type="text" name="username" class="form-control form-control-user"
                                     id="exampleInputUsername" aria-describedby="usenameHelp"
-                                    placeholder="Usuario" value="{{ old('username') }}">
+                                    placeholder="Usuario">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control form-control-user"
