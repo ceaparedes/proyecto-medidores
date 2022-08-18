@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function index(){
 
          if (Auth::check()){
-             return  redirect('/');
+             return  redirect('/dashboard');
          }
 
         return view('login');
@@ -23,7 +23,7 @@ class LoginController extends Controller
             
             return redirect()->intended('/dashboard');
         }else{
-            return back()->withErrors('usuario y pass incorrectos');
+            return back()->withErrors('Usuario y/o Contraseña incorrectos');
         }
     }
 
