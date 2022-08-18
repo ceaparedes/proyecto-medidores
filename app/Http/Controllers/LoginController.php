@@ -23,7 +23,7 @@ class LoginController extends Controller
             
             return redirect()->intended('/dashboard');
         }else{
-            return back();
+            return back()->withErrors('usuario y pass incorrectos');
         }
     }
 
