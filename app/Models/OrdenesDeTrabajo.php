@@ -15,7 +15,8 @@ class OrdenesDeTrabajo extends Model
         'ruta',
         'nombre_cliente',
         'comuna_id',
-        'direccion_cliente'
+        'direccion_cliente',
+        'estado'
     ];
 
 

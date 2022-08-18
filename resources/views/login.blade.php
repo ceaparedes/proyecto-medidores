@@ -50,14 +50,12 @@
 @endsection
 
 @section('js')
+@if ($errors->any())
 <script>
-     @if ($errors->any())
      let errors = `@foreach ($errors->all() as $error)
                 {{ $error }}
             @endforeach`;
-     swal ( "Oops" , errors, "error" )
-                                        
-    @endif
-
+     swal ( "Ups" , errors, "error" )
 </script>
+@endif
 @endsection

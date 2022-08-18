@@ -27,7 +27,8 @@ class OrdenesDeTrabajoImport implements ToModel, WithStartRow
             'ruta' => $row[2],
             'nombre_cliente' => $row[3],
             'comuna_id' => $row[4],
-            'direccion_cliente' => $row[5]
+            'direccion_cliente' => $row[5],
+            'estado' => false
         ]);
     }
 

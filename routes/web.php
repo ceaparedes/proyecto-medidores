@@ -36,10 +36,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         route::get('/medidores', [MedidoresController::class, 'index'])->name('medidores-index');
         route::get('/medidores/importar', [MedidoresController::class, 'import'])->name('medidores-import');
         route::post('/medidores/process-importar', [MedidoresController::class, 'process_import'])->name('medidores-process-import');
+        route::post('/medidores/process-asignar-medidor', [MedidoresController::class, 'process_asignar_medidor'])->name('medidores-process-asignar-medidor');
 
         //Ordenes de Trabajo
         route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo-index');
         route::get('/ordenes-de-trabajo/importar', [OrdenesDeTrabajoController::class, 'import'])->name('ordenes-de-trabajo-import');
         route::post('/ordenes-de-trabajo/process-importar', [OrdenesDeTrabajoController::class, 'process_import'])->name('ordenes-de-trabajo-process-import');
+        route::post('/ordenes-de-trabajo/process-asignar-medidor', [OrdenesDeTrabajoController::class, 'process_asignar_orden'])->name('ordenes-de-trabajo-process-asignar-orden');
     });
 });

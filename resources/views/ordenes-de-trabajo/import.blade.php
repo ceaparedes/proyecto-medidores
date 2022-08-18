@@ -28,3 +28,18 @@
     </div>
 </div>
 @endsection
+
+@section('js') 
+@if ($errors->any())
+<script>
+    
+     let errors = `@foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach`;
+     swal ( "Ups" , errors, "error" )
+                                        
+  
+
+</script>  
+@endif
+@endsection
