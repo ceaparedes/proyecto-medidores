@@ -13,7 +13,7 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item active">
+<li class="nav-item {{(\Request::segment(1) == 'dashboard') ? 'active' : ''}}">
     <a class="nav-link" href="{{route('dashboard')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
@@ -29,17 +29,17 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<li class="nav-item ">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-cog"></i>
         <span>Ordenes de trabajo </span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseTwo" class="collapse {{(\Request::segment(1) == 'ordenes-de-trabajo' || \Request::segment(1) == 'medidores' ) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones:</h6>
-            <a class="collapse-item" href="{{route('ordenes-de-trabajo-index')}}">Ordenes de Trabajo</a>
-            <a class="collapse-item" href="{{route('medidores-index')}}">Medidores</a>
+            <a class="collapse-item {{(\Request::segment(1) == 'ordenes-de-trabajo') ? 'active' : ''}}" href="{{route('ordenes-de-trabajo-index')}}"  >Ordenes de Trabajo</a>
+            <a class="collapse-item {{(\Request::segment(1) == 'medidores') ? 'active' : ''}}" href="{{route('medidores-index')}}">Medidores</a>
         </div>
     </div>
 </li>
