@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\medidores\MedidoresFormatExport;
 use App\Http\Requests\AsignacionRequest;
 use App\Http\Requests\ExcelRequest;
-use App\Imports\MedidoresImport;
+use App\Imports\MedidoresMultipleImport;
 use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
@@ -35,7 +35,7 @@ class MedidoresController extends Controller
     public function process_import(ExcelRequest $request){
       
         // dd($request->all());
-        Excel::import(new MedidoresImport, $request->file('archivo'));
+        Excel::import(new MedidoresMultipleImport, $request->file('archivo'));
         return redirect()->route('medidores.index')->with('success', '¡Registros Cargados con éxito!');
     }
 
