@@ -12,7 +12,7 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Mantenedor Medidores</h1>
-        <a href="{{route('medidores-import')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Importar Medidores</a>
+        <a href="{{route('medidores.import')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Importar Medidores</a>
     </div>
 
 
@@ -66,7 +66,7 @@
                             <td>{{($med->estado) ? 'Activo' : 'inactivo'}}</td>
                             <td>
                                 <!-- <a href="">Editar</a> -->
-                                <a class="open-modal" rel="{{$med->id}}">{{($med->users) ? 'Reasignar' : 'Asignar' }}</a>
+                                <a class="open-modal btn btn-primary" rel="{{$med->id}}">{{($med->users) ? 'Reasignar' : 'Asignar' }}</a>
                                 <!-- <a href="">Eliminar</a> -->
                             </td>
                         </tr>
@@ -89,7 +89,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('medidores-process-asignar-medidor')}}" method="post">
+            <form action="{{route('medidores.process-asignar-medidor')}}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

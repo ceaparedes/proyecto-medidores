@@ -8,7 +8,7 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Mantenedor Ordenes de trabajo</h1>
-        <a href="{{route('ordenes-de-trabajo-import')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Importar Ordenes de Trabajo</a>
+        <a href="{{route('ordenes-de-trabajo.import')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Importar Ordenes de Trabajo</a>
     </div>
 
 
@@ -56,7 +56,7 @@
                             <td>{{($ord->users) ? $ord->users->name : 'Sin trabajador asignado'}}</td>
                             <td>
                                 <!-- <a href="">Editar</a> -->
-                                <a class="open-modal" rel="{{$ord->id}}" >{{($ord->users) ? 'Reasignar' : 'Asignar' }}</a>
+                                <a class="open-modal btn btn-primary" rel="{{$ord->id}}" >{{($ord->users) ? 'Reasignar' : 'Asignar' }}</a>
                                 <!-- <a href="">Eliminar</a> -->
                             </td>
                         </tr>
@@ -78,7 +78,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('ordenes-de-trabajo-process-asignar-orden')}}" method="post">
+            <form action="{{route('ordenes-de-trabajo.process-asignar-orden')}}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
