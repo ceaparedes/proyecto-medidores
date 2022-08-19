@@ -11,7 +11,7 @@
 
         <div class="card-body">
 
-            <form action="{{route('ordenes-de-trabajo-process-import')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('ordenes-de-trabajo.process-import')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="archivoAImportar">Archivo</label>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div>
-                    <a href="{{route('ordenes-de-trabajo-index')}}" class="btn btn-secondary">Volver</a>
+                    <a href="{{route('ordenes-de-trabajo.index')}}" class="btn btn-secondary">Volver</a>
                     <button type="submit" class="btn btn-primary">Cargar</button>
                 </div>
             </form>

@@ -17,6 +17,8 @@
                 <p>Nombre Cliente: {{$ord->nombre_cliente}}</p>
                 <p>Direccion Cliente: {{$ord->direccion_cliente}}</p>
                 <p>Comuna: {{$ord->comunas->nombre}}</p>
+
+                <a href="#" class="btn btn-primary">Instalar</a>
             </div>
         </div>
     </div>

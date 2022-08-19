@@ -38,8 +38,8 @@
     <div id="collapseTwo" class="collapse {{(\Request::segment(1) == 'ordenes-de-trabajo' || \Request::segment(1) == 'medidores' ) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones:</h6>
-            <a class="collapse-item {{(\Request::segment(1) == 'ordenes-de-trabajo') ? 'active' : ''}}" href="{{route('ordenes-de-trabajo-index')}}"  >Ordenes de Trabajo</a>
-            <a class="collapse-item {{(\Request::segment(1) == 'medidores') ? 'active' : ''}}" href="{{route('medidores-index')}}">Medidores</a>
+            <a class="collapse-item {{(\Request::segment(1) == 'ordenes-de-trabajo') ? 'active' : ''}}" href="{{route('ordenes-de-trabajo.index')}}"  >Ordenes de Trabajo</a>
+            <a class="collapse-item {{(\Request::segment(1) == 'medidores') ? 'active' : ''}}" href="{{route('medidores.index')}}">Medidores</a>
         </div>
     </div>
 </li>

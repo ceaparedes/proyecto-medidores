@@ -25,7 +25,7 @@ class OrdenesDeTrabajoController extends Controller
     public function process_import(ExcelRequest $request){
         
         Excel::import(new OrdenesDeTrabajoImport, $request->file('archivo'));
-        return redirect()->route('ordenes-de-trabajo-index')->with('success', '¡Registros Cargados con éxito!');
+        return redirect()->route('ordenes-de-trabajo.index')->with('success', '¡Registros Cargados con éxito!');
     }
 
     public function process_asignar_orden(AsignacionRequest $request){
@@ -34,6 +34,6 @@ class OrdenesDeTrabajoController extends Controller
         $orden->usuario_id = $request->trabajador;
         $orden->estado = false;
         $orden->save();
-        return redirect()->route('ordenes-de-trabajo-index')->with('success', '¡Orden Asignada con éxito!');
+        return redirect()->route('ordenes-de-trabajo.index')->with('success', '¡Orden Asignada con éxito!');
     } 
 }
