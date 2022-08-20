@@ -23,8 +23,7 @@
                     <thead>
                         <tr>
                             <th>Número servicio</th>
-                            <th>codigo</th>
-                            <th>ruta</th>
+                            <th>Ruta</th>
                             <th>Nombre cliente</th>
                             <th>Direccion cliente</th>
                             <th>comuna</th>
@@ -35,7 +34,6 @@
                     <tfoot>
                         <tr>
                             <th>Número servicio</th>
-                            <th>codigo</th>
                             <th>ruta</th>
                             <th>nombre cliente</th>
                             <th>direccion cliente</th>

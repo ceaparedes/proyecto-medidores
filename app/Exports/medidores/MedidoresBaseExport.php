@@ -44,7 +44,7 @@ class MedidoresBaseExport implements FromView, WithTitle, WithEvents, WithStrict
                 $validation_comuna->setPromptTitle('Marca');
                 $validation_comuna->setPrompt('Elija una marca de la lista.');
                 $validation_comuna->setFormula1('\'Marcas\'!$B$1:$B$'.$marcas.'');
-                $validation_comuna->setSqref('B2:B999');
+                $validation_comuna->setSqref('B2:B9999');
                
                 $user = User::role('Trabajador')->select('id', 'name')->count(); 
                 $validation_comuna = $event->sheet->getCell("H2")->getDataValidation();
@@ -59,7 +59,7 @@ class MedidoresBaseExport implements FromView, WithTitle, WithEvents, WithStrict
                 $validation_comuna->setPromptTitle('Trabajador');
                 $validation_comuna->setPrompt('Elija una Trabajador de la lista.');
                 $validation_comuna->setFormula1('\'Trabajadores\'!$B$1:$B$'.$user.'');
-                $validation_comuna->setSqref('H2:H999');
+                $validation_comuna->setSqref('H2:H9999');
 
 
 

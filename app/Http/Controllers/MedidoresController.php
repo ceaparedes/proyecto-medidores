@@ -33,25 +33,32 @@ class MedidoresController extends Controller
     }
 
     public function process_import(ExcelRequest $request){
-      
-        // dd($request->all());
-        Excel::import(new MedidoresMultipleImport, $request->file('archivo'));
-        return redirect()->route('medidores.index')->with('success', '¡Registros Cargados con éxito!');
+        try {
+            Excel::import(new MedidoresMultipleImport, $request->file('archivo'));
+            return redirect()->route('medidores.index')->with('success', '¡Registros Cargados con éxito!');
+        } catch (\Throwable $th) {
+            return back()->withErrors('Ha ocurrido un error, Importación no realizada');
+        }
+        
     }
 
     public function process_asignar_medidor(AsignacionRequest $request){
-        
-        $medidor = Medidores::findOrFail($request->medidor);
-        $count_ordenes_trabajo = OrdenesDeTrabajo::where('usuario_id', $request->trabajador)->count();
-        $medidores_usuario = Medidores::where([['usuario_id', $request->trabajador], ['id', '!=', $request->medidor]])->count();
-        if($count_ordenes_trabajo > $medidores_usuario){
-            $medidor->usuario_id = $request->trabajador;
-            $medidor->estado = true;
-            $medidor->save();
-            return redirect()->route('medidores.index')->with('success', '¡Medidor Asignado con éxito!');
-        }else{
-            return back()->withErrors('El usuario seleccionado no puede tener mas medidor es asignados');
+        try {
+            $medidor = Medidores::findOrFail($request->medidor);
+            $count_ordenes_trabajo = OrdenesDeTrabajo::where('usuario_id', $request->trabajador)->count();
+            $medidores_usuario = Medidores::where([['usuario_id', $request->trabajador], ['id', '!=', $request->medidor]])->count();
+            if($count_ordenes_trabajo > $medidores_usuario){
+                $medidor->usuario_id = $request->trabajador;
+                $medidor->estado = true;
+                $medidor->save();
+                return redirect()->route('medidores.index')->with('success', '¡Medidor Asignado con éxito!');
+            }else{
+                return back()->withErrors('El usuario seleccionado no puede tener mas medidor es asignados');
+            }
+        } catch (\Throwable $th) {
+            return back()->withErrors('Ha ocurrido un error, usuario no asignado');
         }
+        
         
         
     } 

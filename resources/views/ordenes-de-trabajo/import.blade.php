@@ -6,7 +6,7 @@
         <h1 class="h3 mb-0 text-gray-800">Importar Ordenes de Trabajo</h1>
     </div>
     <p class="mb-4">En este espacio, puede cargar la información relacionada a los Ordenes de Trabajo. <br>
-        Para descargar el formato <a target="_blank" href="{{asset('public/archivos/formato_medidores.xlsx')}}">Pinche aqui</a>.</p>
+        Para descargar el formato <a target="_blank" href="{{route('ordenes-de-trabajo.export')}}">Pinche aqui</a>.</p>
     <div class="card shadow mb-4">
 
         <div class="card-body">
