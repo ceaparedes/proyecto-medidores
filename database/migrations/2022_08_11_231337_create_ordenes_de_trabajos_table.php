@@ -15,22 +15,32 @@ class CreateOrdenesDeTrabajosTable extends Migration
     {
         Schema::create('ordenes_de_trabajos', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo', 20);
+            $table->string('codigo', 20)->nullable();
             $table->date('fecha_asignada')->nullable();
             $table->date('fecha_cambio')->nullable();
             $table->date('fecha_cambio_1')->nullable();
             $table->date('fecha_cambio_2')->nullable();
             $table->string('servicio', 32);
-            $table->string('ruta', 32);
+            $table->string('ruta');
             $table->string('nombre_cliente');
             $table->string('rut_cliente', 15)->nullable();
             $table->string('direccion_cliente');
+            //Medidor actual
             $table->string('medidor_actual_serie', 32)->nullable(); 
             $table->string('medidor_actual_diametro', 10)->nullable();
             $table->integer('medidor_actual_ano')->nullable();
-            $table->string('medidor_actual_lectura', 32)->nullable();
+            $table->string('medidor_actual_volumen_total', 32)->nullable();
             $table->string('medidor_actual_lectura_retiro', 32)->nullable();
-            $table->string('medidor_actual_codigo', 50)->nullable();
+            $table->string('medidor_actual_rango_m3')->nullable();
+            $table->integer('medidor_actual_rango_minimo')->nullable();
+            $table->integer('medidor_actual_rango_maximo')->nullable();
+            $table->string('medidor_actual_tecnologia')->nullable();
+            $table->string('medidor_actual_clase_metroilogica', 10)->nullable();
+            $table->string('medidor_actual_rango_medicion', 10)->nullable();
+            $table->string('medidor_actual_fabricante')->nullable();
+            $table->string('medidor_anterior_modelo')->nullable();
+            $table->string('medidor_actual_dispositivo_deteccion_fugas')->nullable();
+            //Medidor Nuevo
             $table->string('medidor_nuevo_numero_serie', 32)->nullable();
             $table->string('medidor_nuevo_diametro', 10)->nullable();
             $table->integer('medidor_nuevo_ano')->nullable();

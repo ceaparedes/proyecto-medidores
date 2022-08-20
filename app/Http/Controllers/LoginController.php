@@ -18,13 +18,17 @@ class LoginController extends Controller
     }
 
     public function login(LoginRequest $request){
-
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        try { 
+            if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+                return redirect()->intended('/dashboard');
+            }else{
+                return back()->withErrors('Usuario y/o Contraseña incorrectos');
+            }
             
-            return redirect()->intended('/dashboard');
-        }else{
+        } catch (\Throwable $th) {
             return back()->withErrors('Usuario y/o Contraseña incorrectos');
         }
+       
     }
 
     public function logout(){

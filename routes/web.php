@@ -44,6 +44,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         route::get('/ordenes-de-trabajo/importar', [OrdenesDeTrabajoController::class, 'import'])->name('ordenes-de-trabajo.import');
         route::post('/ordenes-de-trabajo/process-importar', [OrdenesDeTrabajoController::class, 'process_import'])->name('ordenes-de-trabajo.process-import');
         route::post('/ordenes-de-trabajo/process-asignar-medidor', [OrdenesDeTrabajoController::class, 'process_asignar_orden'])->name('ordenes-de-trabajo.process-asignar-orden');
+        route::get('/ordenes-de-trabajo/exportar-plantilla', [OrdenesDeTrabajoController::class, 'export'])->name('ordenes-de-trabajo.export');
     });
 });
 
