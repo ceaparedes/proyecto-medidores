@@ -13,15 +13,46 @@
                 <h6 class="m-0 font-weight-bold text-primary">{{$ord->servicio}}</h6>
             </div>
             <div class="card-body">
-                <p>N° Servicio: {{$ord->servicio}}</p>
+                <p>Ruta: {{$ord->ruta}}</p>
                 <p>Nombre Cliente: {{$ord->nombre_cliente}}</p>
                 <p>Direccion Cliente: {{$ord->direccion_cliente}}</p>
                 <p>Comuna: {{$ord->comunas->nombre}}</p>
+                @if($medidores)
+                    <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Descargar Hoja cambio Medidor</a>
+                    <a href="{{route('instalaciones.index', $ord->id)}}" class="btn btn-primary">Instalar</a>
 
-                <a href="#" class="btn btn-primary">Instalar</a>
+
+                @else
+                    <span class="alert alert-warning">Debe tener medidores asignados para poder realizar una instalación</span>
+                @endif
             </div>
         </div>
     </div>
     @endforeach
 </div>
+@endsection
+
+
+@section('js')
+
+
+@if(session()->has('success'))
+<script>
+    swal({
+        icon: "success",
+        title: "{{ session()->get('success') }}"
+    });
+</script>
+
+@endif
+
+@if ($errors->any())
+<script>
+    let errors = `@foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach`;
+    swal("Ups", errors, "error")
+</script>
+@endif
+
 @endsection

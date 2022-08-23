@@ -63,7 +63,7 @@
                             <td>{{$med->tuerca}}</td>
                             <td>{{$med->varal}}</td>
                             <td>{{($med->users) ? $med->users->name : 'Sin trabajador asignado'}}</td>
-                            <td>{{($med->estado) ? 'Activo' : 'inactivo'}}</td>
+                            <td>{{($med->estado) ? 'Instalado' : 'no instalado'}}</td>
                             <td>
                                 <!-- <a href="">Editar</a> -->
                                 <a class="open-modal btn btn-primary" rel="{{$med->id}}">{{($med->users) ? 'Reasignar' : 'Asignar' }}</a>

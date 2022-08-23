@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,8 @@ class DashboardController extends Controller
                 return view('dashboard-admin');
         }else{
             $ordenes = OrdenesDeTrabajo::with('comunas')->where([['usuario_id', Auth::user()->id], ['estado', false]])->get();
-            // dd($ordenes);
-            return view('dashboard-trabajador', compact('ordenes'));
+            $medidores = Medidores::where([['usuario_id', Auth::user()->id], ['estado', 0]])->count();
+            return view('dashboard-trabajador', compact('ordenes', 'medidores'));
         }
 
     }
