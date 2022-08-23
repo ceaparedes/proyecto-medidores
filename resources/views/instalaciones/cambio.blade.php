@@ -59,8 +59,129 @@
 
             </div>
         </div>
+        <form action="" method="">
+            <div class="card shadow mb-4" id="cambio-1">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Lectura de retiro</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="lectura-retiro">Lectura de Retiro</label>
+                        <input type="text"class="form-control" id="lectura-retiro" name="lectura-retiro">
+                    </div>
 
-        
+                    <div class="form-group">
+                        <label for="image-1">
+                            <img src="{{ asset('/img/default-image.png') }}" alt="imagen-cambio-1" class="img-thumbnail"
+                                id="preview-image-1" width="200px" heigth="200px"></label>
+                        <input type="hidden" name="path_imagen[]" id="path-imagen-1">
+                        <input type="file" class="img_file" name="imagen[]" id="image-1" style="display:none"
+                            rel="1">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary">Continuar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4" id="cambio-2">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Datos de Nuevo Medidor</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="improcedencia">Medidor</label>
+                        <select name="improcedencia" id="improcedencia" class="custom-select d-block w-100" required>
+                            <option value="" disabled="" selected="">Seleccione</option>
+                            @foreach ($medidores as $med)
+                                <option value="{{ $med->id }}">{{ $med->marcas->nombre }} - {{ $med->numero }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group" id="informacion-medidores">
+
+                    </div>
+                    <p class="card-description">
+                        Foto de medidor instalado
+                    </p>
+                    <div class="form-group">
+                        <label for="image-2">
+                            <img src="{{ asset('/img/default-image.png') }}" alt="imagen-improcedencia"
+                                class="img-thumbnail" id="preview-image-2" width="200px" heigth="200px"></label>
+                        <input type="hidden" name="path_imagen[]" id="path-imagen-2">
+                        <input type="file" class="img_file" name="imagen[]" id="image-2" style="display:none"
+                            rel="2">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary">Continuar</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow mb-4" id="cambio-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Cambio de Varales y Datos del Cliente</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="improcedencia">Causa</label>
+                        <select name="improcedencia" id="improcedencia"  class="custom-select d-block w-100" required>
+                          <option value="" disabled="" selected="">Seleccione</option>
+                            <option value="Sin cambio">Sin cambio</option>
+                            <option value="Entrada">Entrada</option>
+                            <option value="Salida">Salida</option>
+                            <option value="Ambos">Ambos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones (opcional)</label>
+                        <textarea class="form-control" id="observaciones" name="observaciones" rows="4"></textarea>
+                      </div> 
+
+                    <div class="form-group">
+
+                    <label for="image-3">
+                        <img src="{{asset('/img/default-image.png')}}" alt="imagen-improcedencia"class="img-thumbnail" id="preview-image-3" width="200px" heigth="200px"></label>
+                        <input type="hidden" name="path_imagen[]" id="path-imagen-3">
+                    <input type="file" class="img_file" name="imagen[]" id="image-3" style="display:none" rel="3">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary">Continuar</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="card shadow mb-4" id="cambio-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Orden de Cambio</h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Suba una foto de la orden de cambio
+                      </p>
+                    <div class="form-group">
+                        <label for="image-4">
+                            <img src="{{asset('/img/default-image.png')}}" alt="imagen-improcedencia"class="img-thumbnail" id="preview-image-4" width="200px" heigth="200px"></label>
+                            <input type="hidden" name="path_imagen[]" id="path-imagen-4">
+                        <input type="file" class="img_file" name="imagen[]" id="image-4" style="display:none" rel="4">
+                      </div>
+
+                      <div class="form-group">
+                        <button type="button" class="btn btn-primary">Continuar</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
 
 
     </div>
