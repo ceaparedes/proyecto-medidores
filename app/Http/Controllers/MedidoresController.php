@@ -49,7 +49,6 @@ class MedidoresController extends Controller
             $medidores_usuario = Medidores::where([['usuario_id', $request->trabajador], ['id', '!=', $request->medidor]])->count();
             if($count_ordenes_trabajo > $medidores_usuario){
                 $medidor->usuario_id = $request->trabajador;
-                $medidor->estado = true;
                 $medidor->save();
                 return redirect()->route('medidores.index')->with('success', '¡Medidor Asignado con éxito!');
             }else{

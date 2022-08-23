@@ -7,3 +7,26 @@
 </div>
 
 @endsection
+
+@section('js')
+
+@if(session()->has('success'))
+<script>
+    swal({
+        icon: "success",
+        title: "{{ session()->get('success') }}"
+    });
+</script>
+
+@endif
+
+@if ($errors->any())
+<script>
+    let errors = `@foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach`;
+    swal("Ups", errors, "error")
+</script>
+@endif
+
+@endsection

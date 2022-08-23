@@ -46,7 +46,6 @@
                         @foreach($ordenes as $ord)
                         <tr>
                             <td>{{$ord->servicio}}</td>
-                            <td>{{$ord->codigo}}</td>
                             <td>{{$ord->ruta}}</td>
                             <td>{{$ord->nombre_cliente}}</td>
                             <td>{{$ord->direccion_cliente}}</td>
