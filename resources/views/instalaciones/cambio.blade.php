@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="lectura-retiro">Lectura de Retiro</label>
-                        <input type="text"class="form-control" id="lectura-retiro" name="lectura-retiro">
+                        <input type="text"class="form-control" id="lectura-retiro" name="lectura_retiro">
                     </div>
 
                     <div class="form-group">
@@ -126,8 +126,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="improcedencia">Causa</label>
-                        <select name="improcedencia" id="improcedencia"  class="custom-select d-block w-100" required>
+                        <label for="varales">Varales</label>
+                        <select name="varales" id="varales"  class="custom-select d-block w-100" required>
                           <option value="" disabled="" selected="">Seleccione</option>
                             <option value="Sin cambio">Sin cambio</option>
                             <option value="Entrada">Entrada</option>
@@ -148,6 +148,16 @@
                         <input type="hidden" name="path_imagen[]" id="path-imagen-3">
                     <input type="file" class="img_file" name="imagen[]" id="image-3" style="display:none" rel="3">
                     </div>
+
+                    <div class="form-group">
+                        <label for="observaciones">Nombre cliente</label>
+                        <input type="text" name="nombre_cliente" id="nombre-cliente" class="form-control">
+                      </div> 
+
+                      <div class="form-group">
+                        <label for="observaciones">Rut cliente</label>
+                        <input type="text" name="rut_cliente" id="rut-cliente" class="form-control">
+                      </div> 
 
                     <div class="form-group">
                         <button type="button" class="btn btn-primary">Continuar</button>
