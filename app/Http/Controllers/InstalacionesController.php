@@ -38,19 +38,24 @@ class InstalacionesController extends Controller
 
     public function process_improcedencia(ImprocedenciaRequest $request, $orden_id)
     {
+        try {
 
-        $orden = OrdenesDeTrabajo::findOrFail($orden_id);
-        $orden->improcedencia = $request->improcedencia;
-        $orden->observacion = $request->observaciones;
-        foreach ($request->path_imagen as $key => $img) {
-            $variable = 'imagen_' . ($key + 1);
-            $orden->$variable = $img;
+            $orden = OrdenesDeTrabajo::findOrFail($orden_id);
+            $orden->improcedencia = $request->improcedencia;
+            $orden->observacion = $request->observaciones;
+            foreach ($request->path_imagen as $key => $img) {
+                $variable = 'imagen_' . ($key + 1);
+                $orden->$variable = $img;
+            }
+            $orden->estado = 2; //Improcedencia
+            $fecha = new \DateTime;
+            $orden->fecha_cambio =  $fecha->format('Y-m-d');
+            $orden->save();
+            return redirect()->route('dashboard')->with('success', '¡Improcedencia registrada con éxito!');
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
         }
-        $orden->estado = 2; //Improcedencia
-        $fecha = new \DateTime;
-        $orden->fecha_cambio =  $fecha->format('Y-m-d');
-        $orden->save();
-        return redirect()->route('dashboard')->with('success', '¡Improcedencia registrada con éxito!');
     }
 
     public function upload_image(Request $request)
@@ -79,5 +84,25 @@ class InstalacionesController extends Controller
 
             return response()->json(["result" => false, "msg" => "Ha ocurrido un error, no se ha cargado el archivo", "det" => $th->getMessage()]);
         }
+    }
+
+
+    public function calcular_rango(Request $request)
+    {
+        try {
+            $orden = OrdenesDeTrabajo::findOrFail($request->orden);
+            if($request->lectura > $orden->medidor_actual_rango_minimo && $request->lectura < $orden->medidor_actual_rango_maximo){
+                return response()->json(['result' => true, 'msg' => "Rango dentro de lo aceptable"]);
+            }else{
+                return response()->json(['result' => false, 'msg' => "Rango fuera de los parametros"]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['result' => false, 'msg' => "Ha ocurrido un error, calculo no realizado"]);
+        }
+    }
+
+    public function obtener_detalle_medidor(Request $request){
+        $medidor = Medidores::findOrFail($request->medidor);
+        return $medidor;
     }
 }

@@ -55,6 +55,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::get('/instalaciones/cambio/{id}', [InstalacionesController::class, 'cambio'])->name('instalaciones.cambio');
 
         Route::post('/instalaciones/upload-image', [InstalacionesController::class, 'upload_image'])->name('instalaciones.upload-image');
+        Route::post('/instalaciones/validar-lectura', [InstalacionesController::class, 'calcular_rango'])->name('validar-lectura');
+        
     });
 });
 
