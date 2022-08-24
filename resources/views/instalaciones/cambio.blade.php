@@ -60,6 +60,8 @@
             </div>
         </div>
         <form action="" method="">
+        @csrf
+        @method('PUT')
             <div class="card shadow mb-4" id="cambio-1">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Lectura de retiro</h6>
@@ -79,19 +81,19 @@
                             rel="1">
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">Continuar</button>
+                        <button type="button" class="btn btn-primary" id="continue-1">Continuar</button>
                     </div>
                 </div>
             </div>
 
-            <div class="card shadow mb-4" id="cambio-2">
+            <div class="card shadow mb-4" id="cambio-2" style="display: none;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Datos de Nuevo Medidor</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="improcedencia">Medidor</label>
-                        <select name="improcedencia" id="improcedencia" class="custom-select d-block w-100" required>
+                        <label for="medidor">Medidor</label>
+                        <select name="medidor" id="medidor" class="custom-select d-block w-100" required>
                             <option value="" disabled="" selected="">Seleccione</option>
                             @foreach ($medidores as $med)
                                 <option value="{{ $med->id }}">{{ $med->marcas->nombre }} - {{ $med->numero }}
@@ -114,13 +116,13 @@
                             rel="2">
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">Continuar</button>
+                        <button type="button" class="btn btn-primary" id="continue-2">Continuar</button>
                     </div>
                 </div>
 
             </div>
 
-            <div class="card shadow mb-4" id="cambio-3">
+            <div class="card shadow mb-4" id="cambio-3" style="display: none;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Cambio de Varales y Datos del Cliente</h6>
                 </div>
@@ -142,7 +144,9 @@
                       </div> 
 
                     <div class="form-group">
-
+                        <p class="card-description">
+                            Adjunte una foto
+                        </p>
                     <label for="image-3">
                         <img src="{{asset('/img/default-image.png')}}" alt="imagen-improcedencia"class="img-thumbnail" id="preview-image-3" width="200px" heigth="200px"></label>
                         <input type="hidden" name="path_imagen[]" id="path-imagen-3">
@@ -168,7 +172,7 @@
 
             </div>
 
-            <div class="card shadow mb-4" id="cambio-3">
+            <div class="card shadow mb-4" id="cambio-4" style="display: none;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Orden de Cambio</h6>
                 </div>
@@ -184,7 +188,7 @@
                       </div>
 
                       <div class="form-group">
-                        <button type="button" class="btn btn-primary">Continuar</button>
+                        <button type="submit" class="btn btn-primary">Finalizar</button>
                     </div>
 
                 </div>
@@ -198,4 +202,6 @@
 @endsection
 
 @section('js')
+
+<script src="{{asset('js/cambio-medidores/cambio.js')}}"></script>
 @endsection
