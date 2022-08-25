@@ -17,14 +17,14 @@
               <div class="form-group">
                 <label for="improcedencia">Causa</label>
                 <select name="improcedencia" id="improcedencia"  class="custom-select d-block w-100" required>
-					<option value="" disabled="" selected="">Seleccione</option>
-					<option value="Casa deshabitada">Casa deshabitada</option>
-					<option value="Casa cerrada">Casa cerrada</option>
-					<option value="Negación del cliente">Negación del cliente</option>
-					<option value="Inconveniente Técnico">Inconveniente Técnico</option>
-					<option value="Medidor ya cambiado">Medidor ya cambiado</option>
-					<option value="Improcedencia">Improcedencia</option>
-				</select>
+                  <option value="" disabled="" selected="">Seleccione</option>
+                  <option value="Casa deshabitada">Casa deshabitada</option>
+                  <option value="Casa cerrada">Casa cerrada</option>
+                  <option value="Negación del cliente">Negación del cliente</option>
+                  <option value="Inconveniente Técnico">Inconveniente Técnico</option>
+                  <option value="Medidor ya cambiado">Medidor ya cambiado</option>
+                  <option value="Improcedencia">Improcedencia</option>
+                </select>
               </div>
               
               
@@ -48,6 +48,7 @@
                 <input type="hidden" name="path_imagen[]" id="path-imagen-2">
                 <input type="file" class="img_file" name="imagen[]" id="image-2" style="display:none" rel="2">
               </div>
+              
               <div class="form-group">
 
                 <label for="image-3">

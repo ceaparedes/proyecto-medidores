@@ -14,7 +14,7 @@ class OrdenesDeTrabajoController extends Controller
 {
     public function index()
     {
-        $ordenes = OrdenesDeTrabajo::with('comunas')->get();
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['estado', 0]])->get();
 
         $trabajadores = User::role('Trabajador')->get();
         return view('ordenes-de-trabajo.index', compact('ordenes', 'trabajadores'));

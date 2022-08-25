@@ -66,4 +66,9 @@ class MedidoresController extends Controller
     {   
         return Excel::download(new MedidoresFormatExport, 'Formato_medidores.xlsx');
     }
+
+    public function get_medidor(Request $request){
+        $medidor = Medidores::with('marcas')->findOrFail($request->medidor);
+        return response()->json($medidor);
+    }
 }

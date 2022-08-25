@@ -18,10 +18,7 @@
                 <p>Direccion Cliente: {{$ord->direccion_cliente}}</p>
                 <p>Comuna: {{$ord->comunas->nombre}}</p>
                 @if($medidores)
-                    <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Descargar Hoja cambio Medidor</a>
                     <a href="{{route('instalaciones.index', $ord->id)}}" class="btn btn-primary">Instalar</a>
-
-
                 @else
                     <span class="alert alert-warning">Debe tener medidores asignados para poder realizar una instalación</span>
                 @endif

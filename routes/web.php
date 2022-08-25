@@ -39,6 +39,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/medidores/process-importar', [MedidoresController::class, 'process_import'])->name('medidores.process-import');
         Route::post('/medidores/process-asignar-medidor', [MedidoresController::class, 'process_asignar_medidor'])->name('medidores.process-asignar-medidor');
         Route::get('/medidores/exportar-plantilla', [MedidoresController::class, 'export'])->name('medidores.export');
+        route::post('/medidores/get-medidor',[MedidoresController::class, 'get_medidor'])->name('medidores.get-medidor');
 
         //Ordenes de Trabajo
         Route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo.index');
@@ -53,8 +54,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::put('/instalaciones/process-improcedencia/{id}', [InstalacionesController::class, 'process_improcedencia'])->name('instalaciones.process-improcedencia');
 
         Route::get('/instalaciones/cambio/{id}', [InstalacionesController::class, 'cambio'])->name('instalaciones.cambio');
+        Route::put('/instalaciones/process-cambio/{id}', [InstalacionesController::class, 'process_cambio'])->name('instalaciones.process-cambio');
 
         Route::post('/instalaciones/upload-image', [InstalacionesController::class, 'upload_image'])->name('instalaciones.upload-image');
+        Route::post('/instalaciones/validar-lectura', [InstalacionesController::class, 'calcular_rango'])->name('instalaciones.validar-lectura');
+        
     });
 });
 
