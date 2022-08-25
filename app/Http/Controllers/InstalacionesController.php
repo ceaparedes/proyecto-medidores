@@ -85,9 +85,25 @@ class InstalacionesController extends Controller
         }
     }
 
+    public function calcular_rango(Request $request){
+        // dd($request->all());
+        try {
+            $orden = OrdenesDeTrabajo::findOrFail($request->orden);
+            if($request->lectura >= $orden->medidor_actual_rango_minimo && $request->lectura <= $orden->medidor_actual_rango_maximo){
+                
+                return response()->json(["result" => true, "msg" => "Medidor esta dentro del rango de cambio"]);
+            }
+            
+            return response()->json(["result" => false, "msg" => "Medidor no esta dentro del rango de aceptación"]);
+        } catch (\Throwable $th) {
+            return response()->json(["result" => false, "msg" => "Ha ocurrido un error, no se ha calculado el la lectura"]);
+        }
+    }
+
 
     public function process_cambio(CambioRequest $request, $orden_id)
     {
+        // dd($request->all());
         try {
             $orden = OrdenesDeTrabajo::findOrFail($orden_id);
             $fecha = new \DateTime;
@@ -102,15 +118,17 @@ class InstalacionesController extends Controller
             $orden->medidor_nuevo_numero_serie = $medidor->numero;
             $orden->medidor_nuevo_diametro = $medidor->diametro;
             $orden->medidor_nuevo_ano = $medidor->ano;
+
             foreach ($request->path_imagen as $key => $img) {
                 $variable = 'imagen_' . ($key + 1);
                 $orden->$variable = $img;
             }
+
             $orden->save();
 
             return redirect()->route('dashboard')->with('success', '¡Cambio registrado con éxito!');
         } catch (\Throwable $th) {
-            //throw $th;
+            return back()->withErrors('Ha ourrido un error, Cambio no registrado');
         }
     }
 }

@@ -43,6 +43,7 @@ class OrdenesDeTrabajoImport implements ToModel, WithStartRow
             'medidor_anterior_modelo' => $row[14],
             'medidor_actual_dispositivo_deteccion_fugas' => $row[15],
             'medidor_actual_diametro' => $row[16],
+            'estado' => 0
           
         ]);
     }

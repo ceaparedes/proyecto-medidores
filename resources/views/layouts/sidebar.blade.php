@@ -3,8 +3,8 @@
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon ">
+        <i > <img width="50px" heigth="50px"src="{{asset('/img/marca_vertical_transparente.png')}}" alt="logo"></i>{{-- Cambiar al logo--}}
     </div>
     <div class="sidebar-brand-text mx-3">IngeSistem</div>
 </a>

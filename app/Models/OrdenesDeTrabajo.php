@@ -28,6 +28,7 @@ class OrdenesDeTrabajo extends Model
         'medidor_anterior_modelo',
         'medidor_actual_dispositivo_deteccion_fugas',
         'medidor_actual_diametro',
+        'estado'
     ];
 
 

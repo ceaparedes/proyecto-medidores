@@ -28,6 +28,7 @@
                             <th>Direccion cliente</th>
                             <th>comuna</th>
                             <th>Trabajador Asignado</th>
+                            <th>Estado</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -39,18 +40,29 @@
                             <th>direccion cliente</th>
                             <th>comuna</th>
                             <th>Trabajador Asignado</th>
+                            <th>Estado</th>
                             <th>Opciones</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach($ordenes as $ord)
                         <tr>
-                            <td>{{$ord->servicio}}</td>
+                            <td>
+                                {{$ord->servicio}}
+                                @if($ord->users)
+                                    <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Descargar Hoja cambio Medidor</a>
+                                @endif
+                            </td>
                             <td>{{$ord->ruta}}</td>
                             <td>{{$ord->nombre_cliente}}</td>
                             <td>{{$ord->direccion_cliente}}</td>
                             <td>{{$ord->comunas->nombre}}</td>
                             <td>{{($ord->users) ? $ord->users->name : 'Sin trabajador asignado'}}</td>
+                            <td>
+                                @if($ord->estado == 0)
+                                    {{'Orden no realizada'}}
+                                @endif
+                            </td>
                             <td>
                                 <!-- <a href="">Editar</a> -->
                                 <a class="open-modal btn btn-primary" rel="{{$ord->id}}" >{{($ord->users) ? 'Reasignar' : 'Asignar' }}</a>

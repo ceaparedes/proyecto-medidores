@@ -59,7 +59,7 @@
 
             </div>
         </div>
-        <form action="" method="">
+        <form action="{{route('instalaciones.process-cambio', $orden->id)}}" method="POST" id="form-cambio">
         @csrf
         @method('PUT')
             <div class="card shadow mb-4" id="cambio-1">
@@ -69,7 +69,10 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="lectura-retiro">Lectura de Retiro</label>
-                        <input type="text"class="form-control" id="lectura-retiro" name="lectura_retiro">
+                        <input type="text"class="form-control" id="lectura-retiro" name="lectura_retiro" rel="{{$orden->id}}">
+                        <div id="informacion-lectura" style="margin-top:10px;">
+                            
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -96,7 +99,7 @@
                         <select name="medidor" id="medidor" class="custom-select d-block w-100" required>
                             <option value="" disabled="" selected="">Seleccione</option>
                             @foreach ($medidores as $med)
-                                <option value="{{ $med->id }}">{{ $med->marcas->nombre }} - {{ $med->numero }}
+                                <option value="{{ $med->id }}">{{ $med->marcas->nombre }} N° {{ $med->numero }}
                                 </option>
                             @endforeach
                         </select>
@@ -160,11 +163,14 @@
 
                       <div class="form-group">
                         <label for="observaciones">Rut cliente</label>
-                        <input type="text" name="rut_cliente" id="rut-cliente" class="form-control">
+                        <input type="text" name="rut_cliente" id="rut-cliente" class="form-control formato-rut" onchange="">
+                        <div id="error-rut" style="margin-top: 10px;">
+
+                        </div>
                       </div> 
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">Continuar</button>
+                        <button type="button" class="btn btn-primary" id="continue-3">Continuar</button>
                     </div>
 
                 </div>
@@ -202,6 +208,17 @@
 @endsection
 
 @section('js')
-
+<script src="{{asset('js/formatear-rut.js')}}"></script>
+<script src="{{asset('js/carga-imagenes/carga-imagenes.js')}}"></script>
 <script src="{{asset('js/cambio-medidores/cambio.js')}}"></script>
+
+@if ($errors->any())
+<script>
+    let errors = `@foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach`;
+    swal("Ups", errors, "error")
+</script>
+@endif
+
 @endsection
