@@ -34,9 +34,9 @@
 
                                 </form>
                                 <hr>
-                                <!-- <div class="text-center">
+                                {{-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">¿Olvidaste tu contraseña?</a>
-                            </div> -->
+                            </div>  --}}
 
                             </div>
                         </div>

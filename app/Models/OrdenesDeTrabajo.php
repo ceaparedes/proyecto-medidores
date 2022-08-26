@@ -31,6 +31,7 @@ class OrdenesDeTrabajo extends Model
         'estado'
     ];
 
+    protected $dates = ['fecha_asignada', 'fecha_cambio', 'fecha_cambio_1', 'fecha_cambio_2'];
 
     public function comunas(){
         return $this->hasOne(Comunas::class, 'id', 'comuna_id');

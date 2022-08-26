@@ -103,11 +103,11 @@ class InstalacionesController extends Controller
 
     public function process_cambio(CambioRequest $request, $orden_id)
     {
-        // dd($request->all());
         try {
             $orden = OrdenesDeTrabajo::findOrFail($orden_id);
             $fecha = new \DateTime;
             $orden->fecha_cambio = $fecha->format('Y-m-d');
+            $orden->medidor_actual_lectura_retiro = $request->lectura_retiro;
             $orden->varales = $request->varales;
             $orden->observacion = $request->observaciones;
             $orden->rut_persona_receptora = $request->rut_cliente;

@@ -24,7 +24,23 @@ class CambioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'lectura_retiro' => 'required|numeric',
+            'medidor' => 'required',
+            'varales' => 'required',
+            'nombre_cliente' => 'required',
+            'rut_cliente' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'lectura_retiro.required' => 'Debe ingresar una lectura de retiro',
+            'lectura_retiro.numeric' => 'Lectura ingresada no es un número válido',
+            'medidor.required' => 'Debe seleccionar un medidor',
+            'varales.required' =>'Debe ingresar Varales',
+            'nombre_cliente.required' =>'Debe ingresar el Nombre del cliente',
+            'rut_cliente.required' =>'Debe ingresar el Rut del cliente'
         ];
     }
 }
