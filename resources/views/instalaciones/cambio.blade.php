@@ -96,7 +96,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="medidor">Medidor</label>
-                        <select name="medidor" id="medidor" class="custom-select d-block w-100" required>
+                        <select name="medidor" id="medidor" class="custom-select d-block w-100" >
                             <option value="" disabled="" selected="">Seleccione</option>
                             @foreach ($medidores as $med)
                                 <option value="{{ $med->id }}">{{ $med->marcas->nombre }} N° {{ $med->numero }}
@@ -132,8 +132,8 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="varales">Varales</label>
-                        <select name="varales" id="varales"  class="custom-select d-block w-100" required>
-                          <option value="" disabled="" selected="">Seleccione</option>
+                        <select name="varales" id="varales"  class="custom-select d-block w-100" >
+                          <option value=""  selected="">Seleccione</option>
                             <option value="Sin cambio">Sin cambio</option>
                             <option value="Entrada">Entrada</option>
                             <option value="Salida">Salida</option>

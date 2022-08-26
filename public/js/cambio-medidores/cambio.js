@@ -101,6 +101,7 @@ $(document).on('change', '#medidor', function (e) {
 $(document).on('click', '#continue-2', function () {
 
     /////////
+
     if($('#medidor').val() != '' && $('#path-imagen-2').val() != ''){
         $('#cambio-2').hide();
         $('#cambio-3').show();
@@ -129,6 +130,10 @@ $(document).on('click', '#continue-3', function () {
 
 $(document).on('submit', '#form-cambio', function(){
     if($('#path-imagen-4').val() != ''){
+        $('#cambio-1').show();
+        $('#cambio-2').show();
+        $('#cambio-3').show();
+
         return true;
     }
     swal("Ups", "Debe subir la orden de cambio", "error");

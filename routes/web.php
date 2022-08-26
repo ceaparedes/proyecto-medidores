@@ -43,11 +43,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         //Ordenes de Trabajo
         Route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo.index');
+        Route::get('/ordenes-de-trabajo/listado-improcedencias', [OrdenesDeTrabajoController::class, 'listado_improcedencias'])->name('ordenes-de-trabajo.listado-improcedencias');
+        Route::get('/ordenes-de-trabajo/listado-completadas', [OrdenesDeTrabajoController::class, 'listado_completadas'])->name('ordenes-de-trabajo.listado-completadas');
         Route::get('/ordenes-de-trabajo/importar', [OrdenesDeTrabajoController::class, 'import'])->name('ordenes-de-trabajo.import');
         Route::post('/ordenes-de-trabajo/process-importar', [OrdenesDeTrabajoController::class, 'process_import'])->name('ordenes-de-trabajo.process-import');
         Route::post('/ordenes-de-trabajo/process-asignar-medidor', [OrdenesDeTrabajoController::class, 'process_asignar_orden'])->name('ordenes-de-trabajo.process-asignar-orden');
         Route::get('/ordenes-de-trabajo/exportar-plantilla', [OrdenesDeTrabajoController::class, 'export'])->name('ordenes-de-trabajo.export');
-
+        Route::get('/ordenes-de-trabajo/detalle/{id}', [OrdenesDeTrabajoController::class, 'detalle'])->name('ordenes-de-trabajo.detalle');
         //Instalaciones 
         Route::get('/instalaciones/{id}', [InstalacionesController::class, 'index'])->name('instalaciones.index');
         Route::get('/instalaciones/improcedencia/{id}', [InstalacionesController::class, 'improcedencia'])->name('instalaciones.improcedencia');

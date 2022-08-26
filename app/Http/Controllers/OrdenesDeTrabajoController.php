@@ -6,6 +6,7 @@ use App\Exports\ordenesDeTrabajo\OrdenesFormatExport;
 use App\Http\Requests\AsignacionRequest;
 use App\Http\Requests\ExcelRequest;
 use App\Imports\OrdenesDeTrabajoMultipleImport;
+use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
@@ -49,5 +50,30 @@ class OrdenesDeTrabajoController extends Controller
     {
 
         return Excel::download(new OrdenesFormatExport, 'Formato_ordenes.xlsx');
+    }
+
+    public function listado_improcedencias(){
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['estado', 2]])->get();
+      
+        return view('ordenes-de-trabajo.improcedencias', compact('ordenes'));
+    }
+
+    public function listado_completadas(){
+        
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['ordenes_de_trabajos.estado', 1]])->get();
+       
+        return view('ordenes-de-trabajo.completadas', compact('ordenes'));
+    }
+
+    public function detalle($id){
+        $orden = OrdenesDeTrabajo::with(['comunas', 'medidores' ])->findOrFail($id);
+        if($orden->estado == 1){
+            $medidor = Medidores::with(['marcas'])->findOrFail($orden->medidor_id);
+            return view('ordenes-de-trabajo.detalle-cambio', compact('orden', 'medidor'));
+        }else{
+            return view('ordenes-de-trabajo.detalle-improcedencia', compact('orden'));
+        }
+        // dd($orden);
+        
     }
 }
