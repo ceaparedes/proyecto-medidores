@@ -10,6 +10,7 @@ use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class OrdenesDeTrabajoController extends Controller
 {
@@ -38,12 +39,19 @@ class OrdenesDeTrabajoController extends Controller
 
     public function process_asignar_orden(AsignacionRequest $request)
     {
-
-        $orden = OrdenesDeTrabajo::findOrFail($request->orden);
-        $orden->usuario_id = $request->trabajador;
-        $orden->estado = false;
-        $orden->save();
-        return redirect()->route('ordenes-de-trabajo.index')->with('success', '¡Orden Asignada con éxito!');
+        try {
+            DB::beginTransaction();
+            $orden = OrdenesDeTrabajo::findOrFail($request->orden);
+            $orden->usuario_id = $request->trabajador;
+            $orden->estado = false;
+            $orden->save();
+            DB::commit();
+            return redirect()->route('ordenes-de-trabajo.index')->with('success', '¡Orden Asignada con éxito!');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->withErrors('Ha ocurrido un error, orden no asignada');
+        }
+        
     }
 
     public function export()
