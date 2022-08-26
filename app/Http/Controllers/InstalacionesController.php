@@ -9,6 +9,7 @@ use App\Models\OrdenesDeTrabajo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class InstalacionesController extends Controller
 {
@@ -40,6 +41,7 @@ class InstalacionesController extends Controller
     public function process_improcedencia(ImprocedenciaRequest $request, $orden_id)
     {
         try {
+            DB::beginTransaction();
             $orden = OrdenesDeTrabajo::findOrFail($orden_id);
             $orden->improcedencia = $request->improcedencia;
             $orden->observacion = $request->observaciones;
@@ -51,9 +53,11 @@ class InstalacionesController extends Controller
             $fecha = new \DateTime;
             $orden->fecha_cambio =  $fecha->format('Y-m-d');
             $orden->save();
+            DB::commit();
             return redirect()->route('dashboard')->with('success', '¡Improcedencia registrada con éxito!');
         } catch (\Throwable $th) {
-            //throw $th;
+            DB::rollBack();
+            return back()->withErrors('Ha ourrido un error, Cambio no registrado');
         }
     }
 
@@ -104,6 +108,7 @@ class InstalacionesController extends Controller
     public function process_cambio(CambioRequest $request, $orden_id)
     {
         try {
+            DB::beginTransaction();
             $orden = OrdenesDeTrabajo::findOrFail($orden_id);
             $fecha = new \DateTime;
             $orden->fecha_cambio = $fecha->format('Y-m-d');
@@ -125,9 +130,10 @@ class InstalacionesController extends Controller
             }
 
             $orden->save();
-
+            DB::commit();
             return redirect()->route('dashboard')->with('success', '¡Cambio registrado con éxito!');
         } catch (\Throwable $th) {
+            DB::rollBack();
             return back()->withErrors('Ha ourrido un error, Cambio no registrado');
         }
     }

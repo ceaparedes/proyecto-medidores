@@ -11,7 +11,7 @@ use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Illuminate\Support\Facades\DB;
 
 class MedidoresController extends Controller
 {
@@ -44,17 +44,21 @@ class MedidoresController extends Controller
 
     public function process_asignar_medidor(AsignacionRequest $request){
         try {
+            DB::beginTransaction();
             $medidor = Medidores::findOrFail($request->medidor);
             $count_ordenes_trabajo = OrdenesDeTrabajo::where('usuario_id', $request->trabajador)->count();
             $medidores_usuario = Medidores::where([['usuario_id', $request->trabajador], ['id', '!=', $request->medidor]])->count();
             if($count_ordenes_trabajo > $medidores_usuario){
                 $medidor->usuario_id = $request->trabajador;
                 $medidor->save();
+                DB::commit();
                 return redirect()->route('medidores.index')->with('success', '¡Medidor Asignado con éxito!');
             }else{
+                DB::rollBack();
                 return back()->withErrors('El usuario seleccionado no puede tener mas medidor es asignados');
             }
         } catch (\Throwable $th) {
+            DB::rollBack();
             return back()->withErrors('Ha ocurrido un error, usuario no asignado');
         }
         
