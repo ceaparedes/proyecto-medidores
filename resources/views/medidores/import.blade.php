@@ -15,7 +15,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="archivoAImportar">Archivo</label>
-                    <input type="file" class="form-control-file" id="archivoAImportar" name="archivo">
+                    <input type="file" accept=".xls, .xlsx" class="form-control-file" id="archivoAImportar" name="archivo">
                 </div>
 
                 <div>

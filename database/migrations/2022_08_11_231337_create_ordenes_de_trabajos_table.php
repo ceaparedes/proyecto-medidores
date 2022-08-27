@@ -17,9 +17,7 @@ class CreateOrdenesDeTrabajosTable extends Migration
             $table->id();
             $table->string('codigo', 20)->nullable();
             $table->date('fecha_asignada')->nullable();
-            $table->date('fecha_cambio')->nullable();
-            $table->date('fecha_cambio_1')->nullable();
-            $table->date('fecha_cambio_2')->nullable();
+            $table->dateTime('fecha_cambio')->nullable();
             $table->string('servicio', 32);
             $table->string('ruta');
             $table->string('nombre_cliente');
@@ -32,6 +30,7 @@ class CreateOrdenesDeTrabajosTable extends Migration
             $table->string('medidor_actual_volumen_total', 32)->nullable();
             $table->string('medidor_actual_lectura_retiro', 32)->nullable();
             $table->string('medidor_actual_rango_m3')->nullable();
+            $table->string('medidor_actual_rango_m3_250')->nullable();
             $table->integer('medidor_actual_rango_minimo')->nullable();
             $table->integer('medidor_actual_rango_maximo')->nullable();
             $table->string('medidor_actual_tecnologia')->nullable();

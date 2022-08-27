@@ -79,7 +79,7 @@
                     <div class="col-md-6">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Persona que atiende:</label>
-                            <b class="col-sm-3 col-form-label">{{$orden->rut_persona_receptora}}</b>
+                            <b class="col-sm-3 col-form-label">{{$orden->nombre_persona_receptora}}</b>
                         </div>
                     </div>
 
@@ -244,6 +244,10 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <img src="" alt="imagen grande"  class="img-thumbnail"  id="img-modal">
+        <span  class="btn btn-primary btn-icon-split">
+           
+            <span class="text">{{$orden->fecha_cambio->format('d-m-Y H:i:s')}}</span>
+        </span>
       </div>
     </div>
   </div>

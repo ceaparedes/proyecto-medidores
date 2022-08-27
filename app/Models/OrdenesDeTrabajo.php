@@ -19,6 +19,7 @@ class OrdenesDeTrabajo extends Model
         'medidor_actual_ano',
         'medidor_actual_volumen_total',
         'medidor_actual_rango_m3',
+        'medidor_actual_rango_m3_250',
         'medidor_actual_rango_minimo',
         'medidor_actual_rango_maximo',
         'medidor_actual_tecnologia',

@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="lectura-retiro">Lectura de Retiro</label>
-                        <input type="text"class="form-control" id="lectura-retiro" name="lectura_retiro" rel="{{$orden->id}}">
+                        <input type="number" min="1" class="form-control" id="lectura-retiro" name="lectura_retiro" rel="{{$orden->id}}">
                         <div id="informacion-lectura" style="margin-top:10px;">
                             
                         </div>
