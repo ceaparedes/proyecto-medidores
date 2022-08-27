@@ -85,7 +85,7 @@
                     <div class="col-md-6">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Persona que atiende:</label>
-                            <b class="col-sm-3 col-form-label">{{$orden->rut_persona_receptora}}</b>
+                            <b class="col-sm-3 col-form-label">{{$orden->nombre_persona_receptora}}</b>
                         </div>
                     </div>
 
