@@ -7,6 +7,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedidoresController;
 use App\Http\Controllers\OrdenesDeTrabajoController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,10 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
