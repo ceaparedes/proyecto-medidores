@@ -33,7 +33,7 @@ class InstalacionesController extends Controller
     public function cambio($orden_id)
     {
         $orden = OrdenesDeTrabajo::with('comunas')->findOrFail($orden_id);
-        $medidores = Medidores::where([['usuario_id', Auth::user()->id], ['estado', false]])->get();
+        $medidores = Medidores::where([['usuario_id', Auth::user()->id], ['estado', 0]])->get();
         // dd($orden);
         return view('instalaciones.cambio', compact('orden', 'medidores'));
     }
@@ -51,7 +51,7 @@ class InstalacionesController extends Controller
             }
             $orden->estado = 2; //Improcedencia
             $fecha = new \DateTime;
-            $orden->fecha_cambio =  $fecha->format('Y-m-d');
+            $orden->fecha_cambio =  $fecha->format('Y-m-d H:i:s');
             $orden->save();
             DB::commit();
             return redirect()->route('dashboard')->with('success', '¡Improcedencia registrada con éxito!');
@@ -91,6 +91,8 @@ class InstalacionesController extends Controller
 
     public function calcular_rango(Request $request){
         // dd($request->all());
+        //Dado que no existen los rangos, funcionalidad queda pendiente
+        return response()->json(["result" => true, "msg" => "Medidor esta dentro del rango de cambio"]);
         try {
             $orden = OrdenesDeTrabajo::findOrFail($request->orden);
             if($request->lectura >= $orden->medidor_actual_rango_minimo && $request->lectura <= $orden->medidor_actual_rango_maximo){
@@ -111,7 +113,7 @@ class InstalacionesController extends Controller
             DB::beginTransaction();
             $orden = OrdenesDeTrabajo::findOrFail($orden_id);
             $fecha = new \DateTime;
-            $orden->fecha_cambio = $fecha->format('Y-m-d');
+            $orden->fecha_cambio = $fecha->format('Y-m-d H:i:s');
             $orden->medidor_actual_lectura_retiro = $request->lectura_retiro;
             $orden->varales = $request->varales;
             $orden->observacion = $request->observaciones;
@@ -130,6 +132,8 @@ class InstalacionesController extends Controller
             }
 
             $orden->save();
+            $medidor->estado = 1;
+            $medidor->save();
             DB::commit();
             return redirect()->route('dashboard')->with('success', '¡Cambio registrado con éxito!');
         } catch (\Throwable $th) {
