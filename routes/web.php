@@ -25,6 +25,8 @@ if (App::environment('production')) {
     URL::forceScheme('https');
 }
 
+
+
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -46,6 +48,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/medidores/process-asignar-medidor', [MedidoresController::class, 'process_asignar_medidor'])->name('medidores.process-asignar-medidor');
         Route::get('/medidores/exportar-plantilla', [MedidoresController::class, 'export'])->name('medidores.export');
         route::post('/medidores/get-medidor',[MedidoresController::class, 'get_medidor'])->name('medidores.get-medidor');
+        route::post('/medidores/process-multi-asignacion',[MedidoresController::class, 'process_multi_asignacion'])->name('medidores.process-multi-asignacion');
 
         //Ordenes de Trabajo
         Route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo.index');

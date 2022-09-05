@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\medidores\MedidoresFormatExport;
 use App\Http\Requests\AsignacionRequest;
 use App\Http\Requests\ExcelRequest;
+use App\Http\Requests\MultiMedidorRequest;
 use App\Imports\MedidoresMultipleImport;
 use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
@@ -74,5 +75,24 @@ class MedidoresController extends Controller
     public function get_medidor(Request $request){
         $medidor = Medidores::with('marcas')->findOrFail($request->medidor);
         return response()->json($medidor);
+    }
+
+    public function process_multi_asignacion(MultiMedidorRequest $request){
+        try {
+            // dd($request->all());
+            DB::beginTransaction();
+            foreach ($request->medidores as  $med) {
+                $medidor = Medidores::findOrFail($med);                
+                $medidor->usuario_id = $request->trabajador;
+                $medidor->save();
+            }
+            DB::commit();
+            return redirect()->route('medidores.index')->with('success', '¡Medidores Asignados con éxito!');
+        } catch (\Throwable $th) {
+            DB::rollBack(); 
+            dd($th);
+            return redirect()->route('medidores.index')->withErrors('Ha ocurrido un error, medidores no asignados');
+           
+        }
     }
 }
