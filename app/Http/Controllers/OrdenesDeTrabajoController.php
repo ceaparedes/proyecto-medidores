@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Exports\ordenesDeTrabajo\OrdenesFormatExport;
 use App\Http\Requests\AsignacionRequest;
 use App\Http\Requests\ExcelRequest;
+use App\Http\Requests\MultiOrdenesRequest;
 use App\Imports\OrdenesDeTrabajoMultipleImport;
 use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -83,5 +85,23 @@ class OrdenesDeTrabajoController extends Controller
         }
         // dd($orden);
         
+    }
+
+    public function process_multi_asignacion(MultiOrdenesRequest $request){
+        try {
+
+            DB::beginTransaction();
+            foreach ($request->ordenes as $ord) {
+                $orden = OrdenesDeTrabajo::findOrFail($ord);                
+                $orden->usuario_id = $request->trabajador;
+                $orden->save();
+            }
+            DB::commit();
+            return redirect()->route('ordenes-de-trabajo.index')->with('success', '¡Ordenes Asignados con éxito!');
+        } catch (\Throwable $th) {
+            DB::rollBack(); 
+            return redirect()->route('ordenes-de-trabajo.index')->withErrors('Ha ocurrido un error, Ordenes no asignadas');
+           
+        }
     }
 }

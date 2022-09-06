@@ -90,7 +90,6 @@ class MedidoresController extends Controller
             return redirect()->route('medidores.index')->with('success', '¡Medidores Asignados con éxito!');
         } catch (\Throwable $th) {
             DB::rollBack(); 
-            dd($th);
             return redirect()->route('medidores.index')->withErrors('Ha ocurrido un error, medidores no asignados');
            
         }

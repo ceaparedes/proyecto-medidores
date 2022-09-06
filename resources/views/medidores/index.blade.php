@@ -6,8 +6,6 @@
 
 @section('content')
 
-
-
 <div class="container-fluid">
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -28,8 +26,8 @@
                         <tr>
                             <th>
                                 <div class="form-check">
-                                    <input class="form-check-input select-all" type="checkbox" value="" id="selectAllFoot">
-                                    <label class="form-check-label" for="selectAllFoot">
+                                    <input class="form-check-input select-all" type="checkbox" value="" id="selectAllHead">
+                                    <label class="form-check-label" for="selectAllHead">
                                       Seleccionar Todos
                                     </label>
                                   </div>
@@ -157,7 +155,7 @@
             @csrf
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="selector-trabajadores">Example select</label>
+                    <label for="selector-trabajadores">Trabajador</label>
                     <select class="form-control" id="selector-trabajadores" name="trabajador">
                         <option value="">Seleccione un Trabajador</option>
                         @foreach($trabajadores as $tr)
@@ -249,7 +247,7 @@
         console.log(checkboxes);
         $('#contenedor-medidores').empty();
         for (let i = 0; i < checkboxes.length; i++) {
-            $('#contenedor-medidores').append(`<input type="hidden" name="medidores[]" id="medidor-${i}" value="${checkboxes[i]}">`);
+            $('#contenedor-medidores').append(`<input type="hidden" name="medidores[]" id="medidor-seleccionado-${i}" value="${checkboxes[i]}">`);
         }  
         $('#asignacionModalMultiple').modal('show');
     })
