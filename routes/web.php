@@ -25,6 +25,8 @@ if (App::environment('production')) {
     URL::forceScheme('https');
 }
 
+
+
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
     Route::get('/', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -46,6 +48,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/medidores/process-asignar-medidor', [MedidoresController::class, 'process_asignar_medidor'])->name('medidores.process-asignar-medidor');
         Route::get('/medidores/exportar-plantilla', [MedidoresController::class, 'export'])->name('medidores.export');
         route::post('/medidores/get-medidor',[MedidoresController::class, 'get_medidor'])->name('medidores.get-medidor');
+        route::post('/medidores/process-multi-asignacion',[MedidoresController::class, 'process_multi_asignacion'])->name('medidores.process-multi-asignacion');
 
         //Ordenes de Trabajo
         Route::get('/ordenes-de-trabajo', [OrdenesDeTrabajoController::class, 'index'])->name('ordenes-de-trabajo.index');
@@ -56,14 +59,13 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::post('/ordenes-de-trabajo/process-asignar-medidor', [OrdenesDeTrabajoController::class, 'process_asignar_orden'])->name('ordenes-de-trabajo.process-asignar-orden');
         Route::get('/ordenes-de-trabajo/exportar-plantilla', [OrdenesDeTrabajoController::class, 'export'])->name('ordenes-de-trabajo.export');
         Route::get('/ordenes-de-trabajo/detalle/{id}', [OrdenesDeTrabajoController::class, 'detalle'])->name('ordenes-de-trabajo.detalle');
+        route::post('/ordenes-de-trabajo/process-multi-asignacion',[OrdenesDeTrabajoController::class, 'process_multi_asignacion'])->name('ordenes-de-trabajo.process-multi-asignacion');
         //Instalaciones 
         Route::get('/instalaciones/{id}', [InstalacionesController::class, 'index'])->name('instalaciones.index');
         Route::get('/instalaciones/improcedencia/{id}', [InstalacionesController::class, 'improcedencia'])->name('instalaciones.improcedencia');
         Route::put('/instalaciones/process-improcedencia/{id}', [InstalacionesController::class, 'process_improcedencia'])->name('instalaciones.process-improcedencia');
-
         Route::get('/instalaciones/cambio/{id}', [InstalacionesController::class, 'cambio'])->name('instalaciones.cambio');
         Route::put('/instalaciones/process-cambio/{id}', [InstalacionesController::class, 'process_cambio'])->name('instalaciones.process-cambio');
-
         Route::post('/instalaciones/upload-image', [InstalacionesController::class, 'upload_image'])->name('instalaciones.upload-image');
         Route::post('/instalaciones/validar-lectura', [InstalacionesController::class, 'calcular_rango'])->name('instalaciones.validar-lectura');
         
