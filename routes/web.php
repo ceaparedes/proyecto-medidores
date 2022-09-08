@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedidoresController;
 use App\Http\Controllers\OrdenesDeTrabajoController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -25,7 +26,7 @@ if (App::environment('production')) {
     URL::forceScheme('https');
 }
 
-
+Route::get('test-pdf', [PdfController::class, 'index']);
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
