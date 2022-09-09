@@ -4,11 +4,37 @@
 <style>
     table {border-collapse: collapse;}
     table td {padding: 0px}
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
 </style>
 </head>
 <body>
-<img style="position:absolute;top:0.22in;left:7.49in;width:1.14in;height:1.14in" src="{{public_path('img/pdf/orden/ri_1.png')}}" />
-<div style="position:absolute;top:1.68in;left:3.82in;width:1.69in;line-height:0.15in;"><span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#000000">REPORTE DE CAMBIO</span><span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#000000"> </span><br/></SPAN></div>
+    <div style="text-align:right;"><img   src="{{public_path('img/pdf/orden/ri_1.png')}}" />  </div>
+    
+    <h1 style="padding-top:10px; border-top:5px solid #000; text-align:center; font-size: 24px;">REPORTE DE CAMBIO</h1>
+    <div style="width: 50%">
+        <h3>DATOS DEL SERVICIO</h3>
+        <div>
+            <span><b>N° Servicio:</b> 123456</span>
+        </div>
+        <div>
+            <span><b>Nombre Cliente:</b> Juan Pérez</span>
+        </div>
+        <div>
+            <span><b>Fecha Cambio:</b> 07-09-2022</span>
+        </div>
+        <h3>MEDIDOR RETIRADO</h3>
+        <div>
+            <span><b>Numero Serie:</b> 123456</span>
+        </div>
+        <div>
+            <span><b>Lectura Retiro:</b> 123456</span>
+        </div>
+    </div>
+    <div style="width: 50%"></div>
+
+
 <div style="position:absolute;top:1.95in;left:0.73in;width:1.37in;line-height:0.12in;"><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">DATOS DEL SERVICIO</span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000"> </span><br/></SPAN></div>
 <div style="position:absolute;top:2.17in;left:0.73in;width:7.44in;line-height:0.12in;"><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">N° Servicio          </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">: </span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Tahoma;color:#000000">123456 </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">                                                                                                           Dirección   </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">  </span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000">        :      </span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Tahoma;color:#000000">Valdivia # 456</span><span style="font-style:normal;font-weight:bold;font-size:8pt;font-family:Tahoma;color:#000000"> </span><br/></SPAN></div>
 <img style="position:absolute;top:1.66in;left:0.65in;width:7.99in;height:0.02in" src="{{public_path('img/pdf/orden/vi_1.png')}}" />
