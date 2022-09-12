@@ -14,16 +14,13 @@
 
 <body>
     <div >
-        <img style="width: 152px; heigth:99px; text-align:left;" src="{{ public_path('img/pdf/ri_1.png') }}" />
-        <h1 style="font-size: 14px; text-align:center!important; position: relative;">SISTEMA DE GESTIÓN COMERCIAL DE AGUA POTABLE</h1>
-        <h3 style="font-size: 12px; text-align:center!important; position: relative;"><b> ORDEN DE CAMBIO DE MEDIDOR</b></h3>
+        <img style="width: 152px; heigth:99px; text-align:left;float: left;" src="{{ public_path('img/pdf/ri_1.png') }}" />
+        <div style="width:600px;">
+            <h1 style="font-size: 14px; text-align:center!important; position: relative;">SISTEMA DE GESTIÓN COMERCIAL DE AGUA POTABLE</h1>
+            <h3 style="font-size: 12px; text-align:center!important; position: relative;"><b> ORDEN DE CAMBIO DE MEDIDOR</b></h3>
+        </div>
     </div>
-    {{-- <div style="text-align: center">
-        
-    </div>
-    <div style="text-align: center">
-        
-    </div> --}}
+
     <table>
         <tr style="text-align:right; font-size:11px;">
             <td>Ejecutivo:</td>
