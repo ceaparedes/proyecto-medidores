@@ -71,6 +71,9 @@
                                         Seleccione
                                     </label>
                                   </div>
+                                @elseif($ord->users)
+                                  <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Orden</a>
+                                @endif
                                 @endif
                             </td>
                             <td>
@@ -89,9 +92,7 @@
                             <td>
                                 <!-- <a href="">Editar</a> -->
                                 <a class="open-modal btn btn-primary" rel="{{$ord->id}}" >{{($ord->users) ? 'Reasignar' : 'Asignar' }}</a> 
-                                @if($ord->users)
-                                    <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Descargar Hoja cambio Medidor</a>
-                                @endif
+                              
                                 <!-- <a href="">Eliminar</a> -->
                             </td>
                         </tr>
