@@ -46,39 +46,39 @@
             <span style="font-size: 12px;"><b>Cambio vainas:</b> Si</span>
         </div>
     </div>
-    <div style="width:50%; text-align:right;">
+    <div style="width:50%; text-align:right; float: right;">
         <h3>&nbsp;</h3>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Dirección:</b> Valdivia # 456</span>
         </div>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Rut Cliente:</b> 12345678-5</span>
         </div>
 
         <h3>&nbsp;</h3>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Diámetro:</b> 13mm</span>
         </div>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Año Fabricación:</b> 2010</span>
         </div>
 
         <h3>&nbsp;</h3>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Diámetro:</b> 13mm</span>
         </div>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Año :</b> 2022</span>
         </div>
         <h3>&nbsp;</h3>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Cambio Tuercas:</b> Si</span>
         </div>
-        <div>
+        <div style="display: inline-block;">
             <span style="font-size: 12px;"><b>Observacion :</b> -</span>
         </div>
     </div>
-
+    <div style="clear: both;"></div>
     <div style="padding-top:10px; border-top:5px solid #000; text-align:center;">
         
     </div>

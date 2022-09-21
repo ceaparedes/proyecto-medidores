@@ -74,7 +74,6 @@
                                 @elseif($ord->users)
                                   <a href="{{asset('/archivos/hoja_cambio_medidor.docx')}}" class="btn btn-primary">Orden</a>
                                 @endif
-                                @endif
                             </td>
                             <td>
                                 {{$ord->servicio}} 

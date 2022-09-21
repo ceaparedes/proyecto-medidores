@@ -48,7 +48,7 @@
                         <a class="collapse-item {{ \Request::segment(1) == 'ordenes-de-trabajo' && \Request::segment(2) == 'listado-improcedencias' ? 'active' : '' }}"
                             href="{{ route('ordenes-de-trabajo.listado-improcedencias') }}">Improcedencias</a>
                         <a class="collapse-item {{ \Request::segment(1) == 'ordenes-de-trabajo' && \Request::segment(2) == 'listado-completadas' ? 'active' : '' }}"
-                            href="{{ route('ordenes-de-trabajo.listado-completadas') }}">Completadas</a>
+                            href="{{ route('ordenes-de-trabajo.listado-completadas') }}">Ejecutadas</a>
                     </ul>
                     
                 </div>

@@ -12,6 +12,6 @@ class PdfController extends Controller
     
     $pdf = PDF::loadView('pdf.hoja-cambio');
     $pdf->setPaper('letter');
-    return $pdf->download('test.pdf');
+    return $pdf->stream('test.pdf');
    }
 }
