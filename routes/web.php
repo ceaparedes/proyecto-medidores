@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\InstalacionesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -70,6 +71,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::put('/instalaciones/process-cambio/{id}', [InstalacionesController::class, 'process_cambio'])->name('instalaciones.process-cambio');
         Route::post('/instalaciones/upload-image', [InstalacionesController::class, 'upload_image'])->name('instalaciones.upload-image');
         Route::post('/instalaciones/validar-lectura', [InstalacionesController::class, 'calcular_rango'])->name('instalaciones.validar-lectura');
+
+        //Empresas
+        Route::get('/empresas', [EmpresasController::class, 'index'])->name('empresas.index');
+        Route::get('/empresas/crear', [EmpresasController::class, 'create'])->name('empresas.create');
+        Route::post('/empresas/store', [EmpresasController::class, 'store'])->name('empresas.store');
+        Route::get('/empresas/editar/{id}', [EmpresasController::class, 'edit'])->name('empresas.edit');
+        route::put('/empresas/update/{id}', [EmpresasController::class, 'update'])->name('empresas.update');
+        route::delete('/empresas/destroy', [EmpresasController::class, 'destroy'])->name('empresas.destroy');
+        route::post('/empresas/cambiar-estado/{id}', [EmpresasController::class, 'cambiar_estado'])->name('empresas.cambiar-estado');
         
     });
 });
