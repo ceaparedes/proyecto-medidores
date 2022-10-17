@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\InstalacionesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\MedidoresController;
 use App\Http\Controllers\OrdenesDeTrabajoController;
 use App\Http\Controllers\PdfController;
@@ -80,6 +81,15 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         route::put('/empresas/update/{id}', [EmpresasController::class, 'update'])->name('empresas.update');
         route::delete('/empresas/destroy', [EmpresasController::class, 'destroy'])->name('empresas.destroy');
         route::post('/empresas/cambiar-estado/{id}', [EmpresasController::class, 'cambiar_estado'])->name('empresas.cambiar-estado');
+
+         //Empresas
+         Route::get('/marcas', [MarcasController::class, 'index'])->name('marcas.index');
+         Route::get('/marcas/crear', [MarcasController::class, 'create'])->name('marcas.create');
+         Route::post('/marcas/store', [MarcasController::class, 'store'])->name('marcas.store');
+         Route::get('/marcas/editar/{id}', [MarcasController::class, 'edit'])->name('marcas.edit');
+         route::put('/marcas/update/{id}', [MarcasController::class, 'update'])->name('marcas.update');
+         route::delete('/marcas/destroy', [MarcasController::class, 'destroy'])->name('marcas.destroy');
+         route::post('/marcas/cambiar-estado/{id}', [MarcasController::class, 'cambiar_estado'])->name('marcas.cambiar-estado');
         
     });
 });
