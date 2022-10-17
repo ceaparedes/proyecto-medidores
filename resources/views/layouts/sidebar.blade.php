@@ -61,10 +61,13 @@
                 <i class="fas fa-fw fa-wrench"></i>
                 <span>Mantenedores</span>
             </a>
-            <div id="collapseUtilities" class="collapse {{ \Request::segment(1) == 'medidores' ? 'show' : '' }}"
+            <div id="collapseUtilities" class="collapse {{ (\Request::segment(1) == 'medidores' || \Request::segment(1) == 'empresas' ) ? 'show' : '' }}"
                 aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Mantenedores:</h6>
+                    <a class="collapse-item {{ \Request::segment(1) == 'empresas' ? 'active' : '' }}"
+                        href="{{ route('empresas.index') }}">Empresas</a>
+
                     <a class="collapse-item {{ \Request::segment(1) == 'medidores' ? 'active' : '' }}"
                         href="{{ route('medidores.index') }}">Medidores</a>
                     {{-- <a class="collapse-item" href="#">Usuarios</a> --}}
