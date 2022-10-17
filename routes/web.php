@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedidoresController;
 use App\Http\Controllers\OrdenesDeTrabajoController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
@@ -25,7 +26,7 @@ if (App::environment('production')) {
     URL::forceScheme('https');
 }
 
-
+Route::get('test-pdf', [PdfController::class, 'index']);
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
 
@@ -60,6 +61,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
         Route::get('/ordenes-de-trabajo/exportar-plantilla', [OrdenesDeTrabajoController::class, 'export'])->name('ordenes-de-trabajo.export');
         Route::get('/ordenes-de-trabajo/detalle/{id}', [OrdenesDeTrabajoController::class, 'detalle'])->name('ordenes-de-trabajo.detalle');
         route::post('/ordenes-de-trabajo/process-multi-asignacion',[OrdenesDeTrabajoController::class, 'process_multi_asignacion'])->name('ordenes-de-trabajo.process-multi-asignacion');
+        route::get('/ordenes-de-trabajo/exportar-ordenes-realizadas', [OrdenesDeTrabajoController::class, 'ordenes_realizadas_export'])->name('ordenes-de-trabajo.exportar-ordenes-realizadas');
         //Instalaciones 
         Route::get('/instalaciones/{id}', [InstalacionesController::class, 'index'])->name('instalaciones.index');
         Route::get('/instalaciones/improcedencia/{id}', [InstalacionesController::class, 'improcedencia'])->name('instalaciones.improcedencia');

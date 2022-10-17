@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ordenesDeTrabajo\OrdenesFormatExport;
+use App\Exports\ordenesDeTrabajo\RealizadasBaseExport;
 use App\Http\Requests\AsignacionRequest;
 use App\Http\Requests\ExcelRequest;
 use App\Http\Requests\MultiOrdenesRequest;
@@ -103,5 +104,10 @@ class OrdenesDeTrabajoController extends Controller
             return redirect()->route('ordenes-de-trabajo.index')->withErrors('Ha ocurrido un error, Ordenes no asignadas');
            
         }
+    }
+
+    public function ordenes_realizadas_export(){
+       
+        return Excel::download(new RealizadasBaseExport, 'Ordenes_realizadas.xlsx');
     }
 }

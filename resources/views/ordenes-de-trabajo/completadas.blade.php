@@ -8,7 +8,7 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Ordenes de trabajo Completadas</h1>
-        <a href="{{route('ordenes-de-trabajo.import')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Importar Ordenes de Trabajo</a>
+        <a href="{{route('ordenes-de-trabajo.exportar-ordenes-realizadas')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Exportar Ordenes de Trabajo Realizadas</a>
     </div>
 
 
