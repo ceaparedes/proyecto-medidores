@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             MarcasSeeder::class,
             EmpresasSeeder::class,
-            UsersSeeder::class
+            UsersSeeder::class,
+            UserEmpresasSeeder::class
         ]);
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\MedidoresController;
 use App\Http\Controllers\OrdenesDeTrabajoController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 
@@ -40,9 +41,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::group(['middleware' => ['auth']], function () {
 
 
-        Route::get('/editar-perfil', [ProfileController::class, 'index'])->name('edit-profile');
-
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        //Editar Perfil
+        Route::get('/editar-perfil', [ProfileController::class, 'index'])->name('edit-profile');
+        Route::post('/process-editar-perfil/{id}', [ProfileController::class, 'process_edit_profile'])->name('process-edit-profile');
 
         //Medidores
         Route::get('/medidores', [MedidoresController::class, 'index'])->name('medidores.index');
@@ -91,6 +94,14 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
          route::delete('/marcas/destroy', [MarcasController::class, 'destroy'])->name('marcas.destroy');
          route::post('/marcas/cambiar-estado/{id}', [MarcasController::class, 'cambiar_estado'])->name('marcas.cambiar-estado');
         
+         //Usuarios
+         Route::get('/usuarios', [UsersController::class, 'index'])->name('users.index');
+         Route::get('/usuarios/crear', [UsersController::class, 'create'])->name('users.create');
+         Route::post('/usuarios/store', [UsersController::class, 'store'])->name('users.store');
+         Route::get('/usuarios/editar/{id}', [UsersController::class, 'edit'])->name('users.edit');
+         route::put('/usuarios/update/{id}', [UsersController::class, 'update'])->name('users.update');
+         route::delete('/usuarios/destroy', [UsersController::class, 'destroy'])->name('users.destroy');
+         route::post('/usuarios/cambiar-estado/{id}', [UsersController::class, 'cambiar_estado'])->name('users.cambiar-estado');
     });
 });
 

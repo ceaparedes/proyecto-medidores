@@ -46,4 +46,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = ['created_at', 'updated_at'];
+
+    public function empresas(){
+        return $this->hasOne(Empresas::class, 'id', 'empresa_id');
+    }
 }
