@@ -12,6 +12,7 @@ use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,14 @@ class OrdenesDeTrabajoController extends Controller
 {
     public function index()
     {
-        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['estado', 0]])->get();
+
+        $where = array([['estado', 0]]);
+        if(Auth::user()->hasRole('Empresa')){
+            $where[] = ['empresa_id', Auth::user()->empresa_id];
+        }
+
+        
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where($where)->get();
 
         $trabajadores = User::role('Trabajador')->get();
         return view('ordenes-de-trabajo.index', compact('ordenes', 'trabajadores'));
@@ -64,14 +72,24 @@ class OrdenesDeTrabajoController extends Controller
     }
 
     public function listado_improcedencias(){
-        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['estado', 2]])->get();
+
+        $where = array([['ordenes_de_trabajos.estado', 2]]);
+        if(Auth::user()->hasRole('Empresa')){
+            $where[] = ['empresa_id', Auth::user()->empresa_id];
+        }
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where($where)->get();
       
         return view('ordenes-de-trabajo.improcedencias', compact('ordenes'));
     }
 
     public function listado_completadas(){
+
+        $where = array([['ordenes_de_trabajos.estado', 1]]);
+        if(Auth::user()->hasRole('Empresa')){
+            $where[] = ['empresa_id', Auth::user()->empresa_id];
+        }
         
-        $ordenes = OrdenesDeTrabajo::with('comunas')->where([['ordenes_de_trabajos.estado', 1]])->get();
+        $ordenes = OrdenesDeTrabajo::with('comunas')->where($where)->get();
        
         return view('ordenes-de-trabajo.completadas', compact('ordenes'));
     }

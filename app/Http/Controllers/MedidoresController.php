@@ -11,6 +11,7 @@ use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -18,8 +19,16 @@ class MedidoresController extends Controller
 {
     public function index(){
         
-        $medidores = Medidores::with(['marcas', 'users'])->get();
-        
+        $where = array();
+        if(Auth::user()->hasRole('Empresa')){
+            $where[] = ['empresa_id', Auth::user()->empresa_id];
+        }
+       
+        $medidores = Medidores::with(['marcas', 'users']);
+        if(!empty($where)){
+            $medidores= $medidores->where($where);    
+        }
+        $medidores->get();
         $trabajadores = User::role('Trabajador')->get();
        
         return view('medidores.index', compact('medidores', 'trabajadores'));
