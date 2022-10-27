@@ -21,7 +21,6 @@
     </li>
 
     @if (Auth::user()->hasRole('Administrador'))
-        ;
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -70,8 +69,8 @@
 
                     <a class="collapse-item {{ \Request::segment(1) == 'medidores' ? 'active' : '' }}"
                         href="{{ route('medidores.index') }}">Medidores</a>
-                    {{-- <a class="collapse-item" href="#">Usuarios</a> --}}
-
+                    <a class="collapse-item" href="{{ route('users.index') }}">Usuarios</a>
+                    <a class="collapse-item" href="{{ route('carga-datos') }}">Carga de Datos</a>
                 </div>
             </div>
         </li>

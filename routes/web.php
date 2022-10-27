@@ -43,6 +43,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/carga-datos', [DashboardController::class, 'carga_datos'])->name('carga-datos');
         //Editar Perfil
         Route::get('/editar-perfil', [ProfileController::class, 'index'])->name('edit-profile');
         Route::post('/process-editar-perfil/{id}', [ProfileController::class, 'process_edit_profile'])->name('process-edit-profile');

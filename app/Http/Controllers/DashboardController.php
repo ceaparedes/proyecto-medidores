@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Medidores;
 use App\Models\OrdenesDeTrabajo;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -19,5 +18,9 @@ class DashboardController extends Controller
             return view('dashboard-trabajador', compact('ordenes', 'medidores'));
         }
 
+    }
+
+    public function carga_datos(){
+        return view('carga-datos');
     }
 }
